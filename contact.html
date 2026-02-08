@@ -41,36 +41,36 @@
         </div>
 
         <div class="glass-card contact-wrapper">
-            <form action="#" method="POST" class="form-grid">
-                
-                <div class="input-group full-width">
-                    <label>Nombre Completo</label>
-                    <input type="text" placeholder="Ej: Juan Pérez" required>
-                </div>
+            <form action="https://formspree.io/f/mbdallgz" method="POST" class="contact-wrapper">
+    <div class="form-grid">
+        <div class="input-group full-width">
+            <label for="name">Nombre Completo</label>
+            <input type="text" name="name" id="name" placeholder="Ej: Juan Pérez" required>
+        </div>
 
-                <div class="input-group">
-                    <label>Teléfono</label>
-                    <input type="tel" placeholder="+54 9 11..." required>
-                </div>
+        <div class="input-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" name="phone" id="phone" placeholder="+54 9 11...">
+        </div>
 
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="hola@empresa.com" required>
-                </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="hola@empresa.com" required>
+        </div>
 
-                <div class="input-group full-width">
-                    <label>Empresa / Rubro</label>
-                    <input type="text" placeholder="Nombre de tu negocio (Opcional)">
-                </div>
+        <div class="input-group full-width">
+            <label for="company">Empresa / Rubro</label>
+            <input type="text" name="company" id="company" placeholder="Nombre de tu negocio (Opcional)">
+        </div>
 
-                <div class="input-group full-width">
-                    <label>Detalles del Proyecto</label>
-                    <textarea placeholder="Cuéntame sobre tus objetivos, dudas o requerimientos..."></textarea>
-                </div>
+        <div class="input-group full-width">
+            <label for="message">Detalles del Proyecto</label>
+            <textarea name="message" id="message" placeholder="Cuéntame sobre tus objetivos, dudas o requerimientos..." required></textarea>
+        </div>
 
-                <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
-
-            </form>
+        <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
+    </div>
+</form>
         </div>
     </section>
 
