@@ -381,6 +381,26 @@ nav {
     background: rgba(0,0,0,0.3);
 }
 
+/* Imagen para el proyecto de Moda Urbana */
+.p1 {
+    background-image: url('moda-urbana.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Agregamos placeholders para los otros dos para que no se vean vacíos */
+.p2 {
+    background-image: url('fintech.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.p3 {
+    background-image: url('applaunch.png');
+    background-size: cover;
+    background-position: center;
+}
+
 /* --- WORKFLOW --- */
 .workflow-container { position: relative; max-width: 800px; margin: 0 auto; }
 .workflow-container::before { content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); z-index: 0; opacity: 0.3; }
@@ -605,5 +625,32 @@ footer::after {
         width: 100%;
         justify-content: center;
         padding: 18px 30px;
+    }
+}
+/* --- OPTIMIZACIÓN MÓVIL EXTREMA --- */
+@media (max-width: 480px) {
+    /* Ocultamos los enlaces de texto del menú */
+    .menu a:not(.nav-btn), 
+    .menu .dropdown {
+        display: none !important;
+    }
+
+    /* Aseguramos que el botón de contacto se vea bien y centrado */
+    .menu {
+        gap: 0;
+    }
+
+    .nav-btn {
+        padding: 8px 15px; /* Un poco más pequeño para que no ocupe todo */
+        font-size: 0.8rem;
+    }
+
+    /* Opcional: Ajustamos el logo para que no choque */
+    nav {
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
     }
 }

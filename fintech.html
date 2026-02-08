@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTech Corp | Global Asset Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-neon: #64ffda;
+            --bg-navy: #0a192f;
+            --card-navy: #112240;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
+        
+        body { background: var(--bg-navy); color: var(--white); padding: 40px 20px; line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Navegación Interna */
+        .nav-portal {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;
+        }
+        .back-link { color: var(--primary-neon); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+
+        /* Encabezado */
+        header { margin-bottom: 40px; }
+        header h1 { font-size: 2.8rem; font-weight: 700; color: var(--white); }
+        header p { color: var(--slate); font-size: 1.1rem; }
+
+        /* Grid de Dashboard */
+        .dashboard-layout {
+            display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px;
+        }
+
+        .panel {
+            background: var(--card-navy); border-radius: 16px; padding: 35px;
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+
+        /* Simulación de Gráfica de Mercado */
+        .market-chart {
+            height: 300px; display: flex; align-items: flex-end; gap: 12px;
+            margin-top: 40px; border-left: 1px solid rgba(100, 255, 218, 0.1);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1); padding: 10px;
+        }
+
+        .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        
+        .bar {
+            width: 100%; background: linear-gradient(to top, #112240, var(--primary-neon));
+            border-radius: 4px 4px 0 0; position: relative; transition: 0.4s ease;
+        }
+        
+        .bar:hover { filter: brightness(1.2); cursor: pointer; }
+
+        .bar-label { font-size: 0.7rem; color: var(--slate); }
+
+        /* Tarjeta Bancaria */
+        .premium-card {
+            background: linear-gradient(135deg, #020c1b 0%, #112240 100%);
+            border: 1px solid rgba(100, 255, 218, 0.2); height: 220px;
+            border-radius: 20px; padding: 30px; display: flex; flex-direction: column;
+            justify-content: space-between; position: relative; overflow: hidden;
+        }
+
+        .premium-card::after {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 150px; height: 150px;
+            background: var(--primary-neon); opacity: 0.05; border-radius: 50%;
+        }
+
+        .chip { width: 45px; height: 35px; background: #c5a447; border-radius: 6px; }
+        .card-number { font-size: 1.4rem; letter-spacing: 4px; font-weight: 300; }
+
+        /* Lista de Activos */
+        .asset-list { margin-top: 25px; }
+        .asset-item {
+            display: flex; justify-content: space-between; padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .val-up { color: var(--primary-neon); }
+
+        @media (max-width: 900px) {
+            .dashboard-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav-portal">
+            <a href="index.html" class="back-link">← SALIR DEL SISTEMA</a>
+            <span style="font-weight: 700; color: var(--primary-neon);">FINTECH CORP.</span>
+        </nav>
+
+        <header>
+            <h1>Análisis de Cartera</h1>
+            <p>Resumen detallado de activos y liquidez en tiempo real.</p>
+        </header>
+
+        <div class="dashboard-layout">
+            
+            <div class="panel">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Crecimiento Trimestral</h3>
+                    <div style="text-align: right;">
+                        <span style="display: block; font-size: 1.5rem; font-weight: 700;">$142,850.00</span>
+                        <small class="val-up">+12.4% este mes</small>
+                    </div>
+                </div>
+
+                <div class="market-chart">
+                    <div class="bar-wrap"><div class="bar" style="height: 45%;"></div><span class="bar-label">ENE</span></div>
+                    <div class="bar-wrap"><div class="bar" style="height: 65%;"></div><span class="bar-label">FEB</span></div>
+                    <div class="bar-wrap"><div class="bar" style="height: 85%;"></div><span class="bar-label">MAR</span></div>
+                    <div class="bar-wrap"><div class="bar" style="height: 60%;"></div><span class="bar-label">ABR</span></div>
+                    <div class="bar-wrap"><div class="bar" style="height: 75%;"></div><span class="bar-label">MAY</span></div>
+                    <div class="bar-wrap"><div class="bar" style="height: 95%;"></div><span class="bar-label">JUN</span></div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <div class="premium-card">
+                    <div class="chip"></div>
+                    <div class="card-number">4582 9012 3344 8829</div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <div>
+                            <span style="display: block; opacity: 0.5;">TITULAR</span>
+                            <span>SANTIAGO RIVERA</span>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="display: block; opacity: 0.5;">EXPIRA</span>
+                            <span>09/29</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" style="padding: 25px;">
+                    <h4 style="margin-bottom: 20px; font-size: 0.9rem; color: var(--slate);">ULTIMOS MOVIMIENTOS</h4>
+                    <div class="asset-list">
+                        <div class="asset-item">
+                            <span>SaaS Subscription</span>
+                            <span style="color: #f87171;">-$299.00</span>
+                        </div>
+                        <div class="asset-item">
+                            <span>Inversión Equity</span>
+                            <span class="val-up">+$12,000.00</span>
+                        </div>
+                        <div class="asset-item">
+                            <span>Dividendos Mensuales</span>
+                            <span class="val-up">+$840.50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

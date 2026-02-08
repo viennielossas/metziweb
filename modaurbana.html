@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON RIOT | Urban Fashion Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #8b5cf6; 
+            --black: #050505;
+            --white: #ffffff;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--black); color: var(--white); overflow-x: hidden; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000') center/cover;
+            text-align: center;
+        }
+        h1 { font-size: 15vw; line-height: 0.8; letter-spacing: -5px; text-transform: uppercase; }
+        .accent-text { color: var(--accent); }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        .item {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+            transition: 0.5s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+        }
+        .item:hover { filter: grayscale(0%); transform: scale(0.98); }
+        .item h2 { font-size: 2rem; text-transform: uppercase; opacity: 0; transition: 0.3s; }
+        .item:hover h2 { opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+
+
+    <section class="hero">
+        <p style="letter-spacing: 10px; margin-bottom: 20px;">CONCEPT BY METZI</p>
+        <h1>NEON<br><span class="accent-text">RIOT</span></h1>
+        <p style="margin-top: 20px; max-width: 400px;">La nueva era del streetwear ha llegado. Diseños brutales para mentes disruptivas.</p>
+    </section>
+
+    <section class="gallery">
+        <div class="item" style="background-image: url('https://images.unsplash.com/photo-1529139513477-3235a7ad975a?q=80&w=800')">
+            <h2>Hoddies</h2>
+        </div>
+        <div class="item" style="background-image: url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=800')">
+            <h2>Sneakers</h2>
+        </div>
+        <div class="item" style="background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800')">
+            <h2>Accessories</h2>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 20px; text-align: center; border-top: 1px solid #222;">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">DROP 01 / 2025</h2>
+        <button style="background: var(--accent); color: white; border: none; padding: 20px 40px; font-weight: 900; cursor: pointer;">COMPRAR AHORA</button>
+    </footer>
+
+</body>
+</html>
