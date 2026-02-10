@@ -390,7 +390,7 @@ nav {
 
 /* Agregamos placeholders para los otros dos para que no se vean vacíos */
 .p2 {
-    background-image: url('fintech.png');
+    background-image: url('gimnasio.png');
     background-size: cover;
     background-position: center;
 }
