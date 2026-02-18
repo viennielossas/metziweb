@@ -12,10 +12,16 @@
             --grey: #151515;
             --light-grey: #222;
             --text: #e0e0e0;
+            --gold-glow: rgba(197, 160, 89, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { 
+            background-color: var(--dark); 
+            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+            color: var(--text); font-family: 'Inter', sans-serif; scroll-behavior: smooth; 
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
 
         /* --- NAVEGACIÓN --- */
         nav {
@@ -26,32 +32,47 @@
             position: fixed;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
             top: 0;
         }
         .logo { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a { 
+            color: white; text-decoration: none; margin-left: 30px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; position: relative; transition: 0.3s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0;
+            background-color: var(--gold); transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
 
         header {
             height: 35vh;
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center;
+            background-size: cover; background-position: center; background-attachment: fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 2px solid var(--gold);
             padding-top: 80px;
         }
 
-        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); letter-spacing: 5px; }
+        h1 { 
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); letter-spacing: 5px; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8); animation: fadeUp 1s ease-out;
+        }
+        header p { animation: fadeUp 1s ease-out 0.3s backwards; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .booking-container { max-width: 900px; margin: -40px auto 100px; padding: 20px; }
 
         .step-card {
-            background: var(--grey); border: 1px solid var(--light-grey);
+            background: linear-gradient(145deg, #111, #080808); border: 1px solid var(--light-grey);
             padding: 25px; border-radius: 8px; margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
         }
+        .step-card:hover { border-color: rgba(197, 160, 89, 0.3); box-shadow: 0 20px 40px var(--gold-glow); }
 
         h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; margin-bottom: 20px; color: var(--gold); border-left: 3px solid var(--gold); padding-left: 15px; text-transform: uppercase; }
 
@@ -62,6 +83,7 @@
             position: relative; border-radius: 6px; overflow: hidden; cursor: pointer;
             border: 2px solid transparent; transition: 0.3s; height: 140px;
         }
+        .select-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .select-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) grayscale(1); transition: 0.3s; }
         .select-item .info { 
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px; 
@@ -70,7 +92,7 @@
         .select-item span { display: block; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
         .select-item small { color: var(--gold); font-size: 0.8rem; font-weight: bold; }
         
-        .select-item.active { border-color: var(--gold); }
+        .select-item.active { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
         .select-item.active img { filter: brightness(1) grayscale(0); }
         .select-item.active .info { background: var(--gold); }
         .select-item.active span, .select-item.active small { color: #000; }
@@ -97,9 +119,10 @@
         .time-row:hover { background: #1a1a1a; padding-left: 35px; color: var(--gold); }
         .status-tag { font-size: 0.8rem; font-weight: bold; color: var(--gold); }
 
-        .back-btn { display: inline-block; margin-bottom: 20px; color: var(--gold); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .back-btn { display: inline-block; margin-bottom: 60px; color: var(--gold); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #222; }
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #222; background: #000; }
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #222; background: #000; margin-top: auto; }
 
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
@@ -119,6 +142,11 @@
 .time-row.active .status-tag {
     color: var(--gold) !important;
 }
+
+/* Estilos para Inputs y Selects */
+input, select { transition: 0.3s; }
+input:focus, select:focus { border-color: var(--gold) !important; box-shadow: 0 0 15px var(--gold-glow); outline: none; }
+button:hover { box-shadow: 0 0 20px var(--gold-glow); transform: translateY(-2px); }
 
     </style>
 </head>
@@ -223,23 +251,6 @@
         Finalizar Reserva
     </button>
 </div>
-</div>
-
-    <div id="confirmationPanel" style="display: none; background: #1a1a1a; border: 1px solid #c5a059; padding: 25px; margin: 20px auto; border-radius: 8px; max-width: 900px;">
-    <h2 id="summaryTitle" style="color: #c5a059; font-family: 'Cinzel'; margin-bottom: 20px;">CONFIRMAR RESERVA</h2>
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; font-size: 0.8rem; color: #c5a059; margin-bottom: 5px;">TU NOMBRE</label>
-        <input type="text" id="custName" placeholder="Escribe tu nombre aquí" style="width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid #333; color: white;">
-    </div>
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; font-size: 0.8rem; color: #c5a059; margin-bottom: 5px;">MÉTODO DE PAGO</label>
-        <select id="payMethod" style="width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid #333; color: white;">
-            <option value="Efectivo">Efectivo en el local (10% OFF)</option>
-            <option value="Transferencia">Transferencia Bancaria</option>
-            <option value="Mercado Pago">Mercado Pago</option>
-        </select>
-    </div>
-    <button onclick="finishBooking()" style="width: 100%; padding: 15px; background: #c5a059; color: #000; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;">Finalizar Reserva</button>
 </div>
 
     <footer>

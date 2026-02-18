@@ -122,6 +122,168 @@
         footer { padding: 80px 10%; background: #000; text-align: center; border-top: 1px solid #111; }
         .powered-by { margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 900; opacity: 0.6; }
         .powered-by span { color: var(--lime); }
+
+        /* --- MEJORA DE PROFUNDIDAD Y FONDOS --- */
+
+/* 1. Textura de ruido global (Grain) para eliminar lo liso */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 5000;
+}
+
+/* 2. Hero con Vignette y profundidad */
+.hero {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(204, 255, 0, 0.05) 0%, transparent 50%),
+        linear-gradient(to right, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 90%),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600') center/cover !important;
+}
+
+/* 3. Fondo con Gradiente Animado para secciones oscuras */
+#especialidades, #planes, section.section-padding:last-of-type {
+    background: linear-gradient(135deg, #050505 0%, #0a0a0a 50%, #050505 100%) !important;
+    position: relative;
+}
+
+/* 4. "Luces de Neón" difusas en las esquinas de las secciones */
+section::after {
+    content: "";
+    position: absolute;
+    width: 300px; height: 300px;
+    background: var(--lime);
+    filter: blur(150px);
+    opacity: 0.03;
+    bottom: -100px;
+    right: -100px;
+    pointer-events: none;
+}
+
+/* 5. Mejora de las Cards para que no floten en la nada */
+.branch-card, .price-card, .aqua-pass-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%) !important;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+/* 6. Efecto de Grid Tecnológico sutil en el fondo de Aqua Center */
+#aqua-center {
+    background-image: 
+        radial-gradient(circle at center, rgba(0, 204, 255, 0.08) 0%, #050505 100%),
+        linear-gradient(rgba(0, 204, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 204, 255, 0.02) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 50px 50px, 50px 50px !important;
+}
+
+/* 7. Separadores visuales orgánicos entre secciones */
+.stats-bar {
+    box-shadow: 0 15px 50px rgba(204, 255, 0, 0.15);
+    border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+}
+
+/* 8. Overlay de Scanlines (Líneas de monitor antiguo) muy sutil */
+#test-modal {
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(104, 3, 3, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)) !important;
+    background-size: 100% 2px, 3px 100% !important;
+}
+
+/* --- REDISEÑO DE FAQ PREMIUM --- */
+
+/* 1. Contenedor de la sección para dar aire */
+#faq {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 2. Estilo de cada Item (Caja de cristal) */
+.faq-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 15px;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0; /* Reseteamos el padding para controlar el interior */
+    overflow: hidden;
+}
+
+/* 3. Estado Hover y Activo */
+.faq-item:hover {
+    border-color: rgba(204, 255, 0, 0.4);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.faq-item.active {
+    border-color: var(--lime);
+    background: rgba(204, 255, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. La Pregunta (Header del item) */
+.faq-question {
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif; /* Más legible para preguntas */
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 0; /* Reseteamos margen */
+    transition: 0.3s;
+}
+
+.faq-item.active .faq-question {
+    color: var(--lime);
+}
+
+/* 5. El Símbolo (+ / -) */
+.faq-question span {
+    background: var(--glass);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    transition: 0.4s;
+    border: 1px solid var(--glass-border);
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(45deg); /* El + gira y parece una X */
+    background: var(--lime);
+    color: black;
+    border-color: var(--lime);
+}
+
+/* 6. La Respuesta (Contenedor animado) */
+.faq-answer {
+    padding: 0 30px;
+    max-height: 0; /* Cerrado por defecto */
+    opacity: 0;
+    display: block !important; /* Sobreescribimos el display:none del script viejo */
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 7. Clase que activa la apertura desde el script */
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Altura suficiente para el texto */
+    opacity: 1;
+    padding-bottom: 30px;
+}
     </style>
 </head>
 <body>
@@ -351,6 +513,26 @@
             <div class="faq-question" onclick="toggleFaq(2)">¿Hay beneficios por pago anual? <span>+</span></div>
             <div class="faq-answer">¡Sí! Contamos con bonificaciones especiales si decides abonar tu membresía de forma semestral o anual. Consulta en recepción de cualquier sede.</div>
         </div>
+                <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(3)">¿El plan incluye asesoría nutricional? <span>+</span></div>
+            <div class="faq-answer">Sí, tanto el Plan Black como el Aqua Pass incluyen una consulta mensual con nuestro equipo de nutrición deportiva para alinear tu dieta con tus objetivos de entrenamiento.</div>
+        </div>
+                <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(4)">¿Cuentan con estacionamiento propio? <span>+</span></div>
+            <div class="faq-answer">Nuestras sedes de San Isidro y Belgrano cuentan con parking gratuito para socios durante 2 horas. En la sede Palermo tenemos convenio con el garage aledaño.</div>
+        </div>
+                <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(5)">¿Que marcas de equipamiento usan? <span>+</span></div>
+            <div class="faq-answer">Trabajamos exclusivamente con tecnología de vanguardia: máquinas Technogym de última generación y zonas de peso libre con equipamiento olímpico Eleiko.</div>
+        </div>
+                <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(6)">¿Puedo congelar mi membresía por viaje? <span>+</span></div>
+            <div class="faq-answer">¡Por supuesto! Puedes solicitar el congelamiento de tu plan hasta por 30 días al año sin costo adicional, notificando 48 horas antes desde nuestra App.</div>
+        </div>
+                <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(7)">¿Cuál es la edad mínima para socios? <span>+</span></div>
+            <div class="faq-answer">La edad mínima de ingreso es de 16 años, y para el plan Kids es de 12 años. Menores de 18 deben presentar una autorización firmada por sus padres y un apto físico actualizado.</div>
+        </div>
     </section>
 
     <footer>
@@ -371,18 +553,18 @@
             document.getElementById('test-modal').style.display = 'none';
         }
 
-        function toggleFaq(index) {
-            const faqItems = document.querySelectorAll('.faq-item');
-            const answer = faqItems[index].querySelector('.faq-answer');
-            const span = faqItems[index].querySelector('span');
-            const isOpen = answer.style.display === 'block';
-            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-            document.querySelectorAll('.faq-question span').forEach(s => s.innerText = '+');
-            if (!isOpen) {
-                answer.style.display = 'block';
-                span.innerText = '-';
-            }
-        }
+    function toggleFaq(index) {
+        const faqItems = document.querySelectorAll('.faq-item');
+    
+        // Si el item ya está activo, lo cerramos. Si no, cerramos todos y abrimos el actual.
+          const alreadyActive = faqItems[index].classList.contains('active');
+    
+         faqItems.forEach(item => item.classList.remove('active'));
+    
+    if (!alreadyActive) {
+        faqItems[index].classList.add('active');
+    }
+}
 
         // Cerrar modal si se hace clic fuera del contenido
         window.onclick = function(event) {
